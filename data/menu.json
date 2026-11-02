@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02T12:39:16+09:00",
+  "updated_at": "2026-11-02T12:55:40+09:00",
   "cafeterias": [
     {
       "id": "tsudanuma",
@@ -42,7 +42,7 @@
             },
             {
               "category": "グルメカレー",
-              "name": "温玉&粉チーズ カレー",
+              "name": "温玉&粉チーズ",
               "price": 350,
               "note": null
             },
@@ -54,19 +54,19 @@
             },
             {
               "category": "日替りラーメン",
-              "name": "とんこつパーコー ラーメン",
+              "name": "とんこつパーコー",
               "price": 400,
               "note": null
             },
             {
               "category": "ラーメン",
-              "name": "塩 ラーメン",
+              "name": "塩ラーメン",
               "price": 350,
               "note": null
             },
             {
               "category": "今週のパスタ",
-              "name": "チキントマト パスタ",
+              "name": "チキントマト",
               "price": null,
               "note": null
             },
@@ -77,7 +77,7 @@
               "note": null
             },
             {
-              "category": "",
+              "category": "夕定食",
               "name": "温玉のせ やきとり丼",
               "price": 300,
               "note": null
@@ -114,13 +114,13 @@
             },
             {
               "category": "日替りサラダ",
-              "name": "ローストビーフ サラダ",
+              "name": "ローストビーフ",
               "price": 150,
               "note": null
             },
             {
               "category": "グルメカレー",
-              "name": "チョリソー カレー",
+              "name": "チョリソー",
               "price": 350,
               "note": null
             },
@@ -132,30 +132,30 @@
             },
             {
               "category": "日替りラーメン",
-              "name": "味噌バター ラーメン",
+              "name": "味噌バター",
               "price": 400,
               "note": null
             },
             {
               "category": "ラーメン",
-              "name": "醤油 ラーメン",
+              "name": "醤油ラーメン",
               "price": 350,
               "note": null
             },
             {
               "category": "今週のパスタ",
-              "name": "チキンクリーム パスタ",
+              "name": "チキンクリーム",
               "price": null,
               "note": null
             },
             {
               "category": "今日のパスタ",
-              "name": "肉団子の トマトソース パスタ",
+              "name": "肉団子の トマトソース",
               "price": 300,
               "note": null
             },
             {
-              "category": "",
+              "category": "夕定食",
               "name": "ソースヒレカツ丼",
               "price": 300,
               "note": null
@@ -192,13 +192,13 @@
             },
             {
               "category": "日替りサラダ",
-              "name": "えびとアボカド サラダ",
+              "name": "えびとアボカド",
               "price": 150,
               "note": null
             },
             {
               "category": "グルメカレー",
-              "name": "焼肉 カレー",
+              "name": "焼肉カレー",
               "price": 350,
               "note": null
             },
@@ -210,30 +210,30 @@
             },
             {
               "category": "日替りラーメン",
-              "name": "豚キムチ (醤油) ラーメン",
+              "name": "豚キムチ (醤油)",
               "price": 400,
               "note": null
             },
             {
               "category": "ラーメン",
-              "name": "とんこつ ラーメン",
+              "name": "とんこつラーメン",
               "price": 350,
               "note": null
             },
             {
               "category": "今週のパスタ",
-              "name": "チキンクリーム パスタ",
+              "name": "チキンクリーム",
               "price": null,
               "note": null
             },
             {
               "category": "今日のパスタ",
-              "name": "ピリ辛ソーセージ ナポリタン パスタ",
+              "name": "ピリ辛ソーセージ ナポリタン",
               "price": 300,
               "note": null
             },
             {
-              "category": "",
+              "category": "夕定食",
               "name": "ピリ辛そぼろ丼",
               "price": 300,
               "note": null
@@ -270,13 +270,13 @@
             },
             {
               "category": "日替りサラダ",
-              "name": "ねぎチャーシュー サラダ",
+              "name": "ねぎチャーシュー",
               "price": 150,
               "note": null
             },
             {
               "category": "グルメカレー",
-              "name": "5種の チーズかつ カレー",
+              "name": "5種の チーズかつ",
               "price": 350,
               "note": null
             },
@@ -294,13 +294,13 @@
             },
             {
               "category": "ラーメン",
-              "name": "味噌 ラーメン",
+              "name": "味噌ラーメン",
               "price": 350,
               "note": null
             },
             {
               "category": "今週のパスタ",
-              "name": "チキントマト パスタ",
+              "name": "チキントマト",
               "price": null,
               "note": null
             },
@@ -311,7 +311,7 @@
               "note": null
             },
             {
-              "category": "",
+              "category": "夕定食",
               "name": "ハンバーグ トマトソース",
               "price": 300,
               "note": null
@@ -348,13 +348,13 @@
             },
             {
               "category": "日替りサラダ",
-              "name": "とりムネとパプリカ サラダ",
+              "name": "とりムネとパプリカ",
               "price": 150,
               "note": null
             },
             {
               "category": "グルメカレー",
-              "name": "ハムステーキ カレー",
+              "name": "ハムステーキ",
               "price": 350,
               "note": null
             },
@@ -366,30 +366,30 @@
             },
             {
               "category": "日替りラーメン",
-              "name": "パーコー麺 (醤油) ラーメン",
+              "name": "パーコー麺 (醤油)",
               "price": 400,
               "note": null
             },
             {
               "category": "ラーメン",
-              "name": "塩 ラーメン",
+              "name": "塩ラーメン",
               "price": 350,
               "note": null
             },
             {
               "category": "今週のパスタ",
-              "name": "チキントマト パスタ",
+              "name": "チキントマト",
               "price": null,
               "note": null
             },
             {
               "category": "今日のパスタ",
-              "name": "和風 ツナクリーム パスタ",
+              "name": "和風 ツナクリーム",
               "price": 300,
               "note": null
             },
             {
-              "category": "",
+              "category": "夕定食",
               "name": "焼肉丼",
               "price": 300,
               "note": null
@@ -446,7 +446,7 @@
             },
             {
               "category": "グルメカレー",
-              "name": "スクランブルエッグ カレー",
+              "name": "スクランブルエッグ",
               "price": null,
               "note": null
             },
@@ -488,7 +488,7 @@
             },
             {
               "category": "グルメカレー",
-              "name": "焼肉 カレー",
+              "name": "焼肉カレー",
               "price": null,
               "note": null
             },
@@ -497,12 +497,6 @@
               "name": "天ぷらうどん・そば カレーうどん・そば",
               "price": 300,
               "note": null
-            },
-            {
-              "category": "麺",
-              "name": "ラーメン販売",
-              "price": null,
-              "note": "ありません"
             }
           ]
         },
@@ -530,7 +524,7 @@
             },
             {
               "category": "グルメカレー",
-              "name": "チーズ包み メンチカツ カレー",
+              "name": "チーズ包み メンチカツ",
               "price": null,
               "note": null
             },
@@ -572,7 +566,7 @@
             },
             {
               "category": "グルメカレー",
-              "name": "イカフライ カレー",
+              "name": "イカフライ",
               "price": null,
               "note": null
             },
@@ -614,7 +608,7 @@
             },
             {
               "category": "グルメカレー",
-              "name": "チキンカツ カレー",
+              "name": "チキンカツ",
               "price": null,
               "note": null
             },
@@ -682,7 +676,7 @@
             },
             {
               "category": "カレー",
-              "name": "ササミチーズ カレー",
+              "name": "ササミチーズ",
               "price": 350,
               "note": null
             },
@@ -712,7 +706,7 @@
             },
             {
               "category": "パスタ",
-              "name": "カルボナーラ パスタ",
+              "name": "カルボナーラ",
               "price": 350,
               "note": null
             }
@@ -730,13 +724,13 @@
             },
             {
               "category": "カレー",
-              "name": "温玉チーズ カレー",
+              "name": "温玉チーズ",
               "price": 350,
               "note": null
             },
             {
               "category": "パスタ",
-              "name": "陳さんの 鶏そば パスタ",
+              "name": "陳さんの 鶏そば",
               "price": 400,
               "note": null
             }
@@ -760,7 +754,7 @@
             },
             {
               "category": "パスタ",
-              "name": "ポルチーニ パスタ",
+              "name": "ポルチーニ",
               "price": 350,
               "note": null
             }
@@ -784,7 +778,7 @@
             },
             {
               "category": "パスタ",
-              "name": "クリーム明太 パスタ",
+              "name": "クリーム明太",
               "price": 400,
               "note": null
             }

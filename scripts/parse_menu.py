@@ -103,10 +103,10 @@ KINDS = ("ラーメン", "カレー", "サラダ", "パスタ")
 
 
 def with_kind(item: dict, category: str) -> dict:
-    """「塩」「焼肉」だけでは分からないので、見出しの種類（ラーメン、カレーなど）を足す"""
+    """「塩」「焼肉」のような短い名前だけでは分からないので、見出しの種類（ラーメン、カレーなど）を足す"""
     kind = next((k for k in KINDS if category.endswith(k)), None)
-    if kind and kind not in item["name"]:
-        return {**item, "name": f"{item['name']} {kind}"}
+    if kind and kind not in item["name"] and len(item["name"]) <= 4:
+        return {**item, "name": item["name"] + kind}
     return item
 
 
@@ -124,6 +124,8 @@ def parse_pdf(data: bytes) -> dict:
         page = pdf.pages[0]
         table = page.find_tables()[0]
         cells = [Cell(*bbox) for bbox in dict.fromkeys(table.cells)]
+        # 表のすき間に置かれた語（「<夕定食>」のような区切りの見出し）
+        loose: list[dict] = []
         # use_text_flow: 重なって描かれた別の文字列（見出しにかぶる料理名など）を混ぜない
         for w in page.extract_words(x_tolerance=1.5, use_text_flow=True, extra_attrs=["size"]):
             cx, cy = center(w)
@@ -131,6 +133,8 @@ def parse_pdf(data: bytes) -> dict:
                 if cell.x0 <= cx < cell.x1 and cell.top <= cy < cell.bottom:
                     cell.words.append(w)
                     break
+            else:
+                loose.append(w)
         dates = find_dates(page)
 
     # 日付の列ごとの x 座標と、月をまたぐ日付の補完
@@ -160,10 +164,21 @@ def parse_pdf(data: bytes) -> dict:
             key=lambda l: l.top,
         )
         lines = [line for l in found for line in l.lines()]
-        if found and all(PRICE_RE.fullmatch(l) for l in lines) and found[0].bottom - found[0].top < 25:
-            above = next((l for l in labels if abs(l.bottom - found[0].top) < 2), None)
-            if above and any(not PRICE_RE.fullmatch(l) for l in above.lines()):
-                return above.lines() + lines, True
+        if found and all(PRICE_RE.fullmatch(l) for l in lines):
+            heading = next(
+                (
+                    normalize(w["text"]).strip("<>")
+                    for w in loose
+                    if w["x0"] < found[0].x1 and 0 <= found[0].top - w["bottom"] < 3
+                ),
+                None,
+            )
+            if heading:
+                return [heading, *lines], False
+            if found[0].bottom - found[0].top < 25:
+                above = next((l for l in labels if abs(l.bottom - found[0].top) < 2), None)
+                if above and any(not PRICE_RE.fullmatch(l) for l in above.lines()):
+                    return above.lines() + lines, True
         return lines, False
 
     days = [{"month": m, "day": d, "note": None, "items": []} for _, m, d in columns]
@@ -203,6 +218,9 @@ def parse_pdf(data: bytes) -> dict:
                 days[i]["note"] = " ".join(lines)
             continue
         has_price = any(PRICE_RE.search(l) for l in lines)
+        # 「ラーメン販売 ありません」のように、料理がなく注意書きだけのセル
+        if not has_price and any(w in " ".join(lines) for w in NOTICE_WORDS):
+            continue
         items = split_items(lines, prices[0] if prices else None)
         for i in idx:
             for item in items:

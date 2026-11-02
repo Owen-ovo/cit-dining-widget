@@ -21,43 +21,77 @@ const SWITCH_TO_TOMORROW_HOUR = 20;
 const BREAKFAST_END_HOUR = 10;
 
 const WIDGET_BG_COLOR = "#0C1220";
-const TEXT_COLOR = "#FFFFFF";
-const SUB_TEXT_COLOR = "#9AA4B8";
+const TEXT_COLOR = "#F1F5F9";
+const SUB_TEXT_COLOR = "#8B97AD";
+const DIVIDER_COLOR = "#1E293B";
+// 食堂ごとの色（見出しの帯・日付のバッジ・分類名）
 const CAFETERIA_COLOR = {
-  tsudanuma: "#1E3A8A",
-  shin1: "#065F46",
-  shin2: "#9A3412",
+  tsudanuma: "#60A5FA",
+  shin1: "#34D399",
+  shin2: "#FB923C",
 };
 
+// サイズごとの見た目。rows は 1 つの食堂に表示する料理の行数（食堂を 2 つ並べるときは multiRows）。
+// compactHeader は見出しの日付を省き、バッジだけにする（今日・明日以外はバッジに日付を出す）
 const LAYOUT = {
-  small: { padding: 12, cornerRadius: 8, fontSize: { title: 13, date: 11, item: 12, price: 11 }, maxItems: 4 },
-  medium: { padding: 14, cornerRadius: 10, fontSize: { title: 15, date: 12, item: 13, price: 12 }, maxItems: 5 },
-  large: { padding: 16, cornerRadius: 12, fontSize: { title: 17, date: 13, item: 14, price: 13 }, maxItems: 12 },
-  extraLarge: { padding: 18, cornerRadius: 12, fontSize: { title: 18, date: 14, item: 15, price: 14 }, maxItems: 12 },
+  small: { padding: 12, rows: 5, multiRows: 2, labelWidth: 30, compactHeader: true, fontSize: { title: 13, badge: 9, date: 10, label: 9, item: 11.5, price: 10.5 } },
+  medium: { padding: 14, rows: 6, multiRows: 6, labelWidth: 32, fontSize: { title: 14, badge: 9.5, date: 11, label: 9.5, item: 12.5, price: 11.5 } },
+  large: { padding: 16, rows: 15, multiRows: 8, labelWidth: 36, fontSize: { title: 16, badge: 10, date: 12, label: 10, item: 13.5, price: 12.5 } },
+  extraLarge: { padding: 18, rows: 15, multiRows: 8, labelWidth: 36, fontSize: { title: 16, badge: 10, date: 12, label: 10, item: 13.5, price: 12.5 } },
 };
 
 // Scriptable 内で実行したときのプレビューサイズとパラメータ
 const TEST_FAMILY = "medium";
-const TEST_TARGET = "shin";
+const TEST_TARGET = "tsudanuma";
 // ===== 設定ここまで =====
 
 const WEEKDAYS = ["日", "月", "火", "水", "木", "金", "土"];
+// 食堂を 2 つ並べるときは、キャンパス名と日付を 1 回だけ出し、各列は short の名前にする
 const TARGETS = {
-  tsudanuma: ["tsudanuma"],
-  shin1: ["shin1"],
-  shin2: ["shin2"],
-  shin: ["shin1", "shin2"],
+  tsudanuma: { ids: ["tsudanuma"] },
+  shin1: { ids: ["shin1"] },
+  shin2: { ids: ["shin2"] },
+  shin: { ids: ["shin1", "shin2"], title: "新習志野", short: { shin1: "1F", shin2: "2F" } },
 };
+
+// 料理の分類。表示はこの順に並ぶ
+const GROUPS = ["朝食", "定食", "丼", "麺", "カレー", "パスタ", "サラダ", "弁当", "夕食", "その他"];
+
+function groupOf(item) {
+  const c = item.category;
+  if (c.includes("朝")) return "朝食";
+  if (c.includes("夕")) return "夕食";
+  if (/麺|ラーメン|うどん|そば/.test(c)) return "麺";
+  if (c.includes("カレー")) return "カレー";
+  if (c.includes("パスタ")) return "パスタ";
+  if (c.includes("サラダ")) return "サラダ";
+  if (c.includes("弁当")) return "弁当";
+  if (c.includes("丼")) return "丼";
+  if (c.includes("定食")) return "定食";
+  // 見出しが値段だけの行は料理名で分ける
+  if (c === "") return item.name.endsWith("丼") ? "丼" : "定食";
+  return "その他";
+}
 
 function isoDate(d) {
   const pad = (n) => String(n).padStart(2, "0");
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
-function formatDate(iso) {
+function parseIso(iso) {
   const [y, m, d] = iso.split("-").map(Number);
-  const wd = WEEKDAYS[new Date(y, m - 1, d).getDay()];
-  return `${m}/${d}(${wd})`;
+  return new Date(y, m - 1, d);
+}
+
+function formatDate(iso) {
+  const d = parseIso(iso);
+  return `${d.getMonth() + 1}/${d.getDate()}(${WEEKDAYS[d.getDay()]})`;
+}
+
+// 「今日」「明日」。それより先の日は null
+function relativeDay(iso, now) {
+  const diff = Math.round((parseIso(iso) - parseIso(isoDate(now))) / 86400000);
+  return diff === 0 ? "今日" : diff === 1 ? "明日" : null;
 }
 
 // 表示したい日以降で、メニュー表にある最初の日を返す。表にない日（日曜など）は次の営業日になる
@@ -67,6 +101,27 @@ function pickDay(cafeteria, now) {
   const targetIso = isoDate(target);
   const days = [...cafeteria.days].sort((a, b) => a.date.localeCompare(b.date));
   return days.find((d) => d.date >= targetIso) ?? null;
+}
+
+// 行数に収まるように、分類ごとに 1 品ずつ順番に選ぶ。どの分類があるかを先に見せるため
+function selectRows(items, maxRows) {
+  const byGroup = new Map(GROUPS.map((g) => [g, []]));
+  for (const item of items) byGroup.get(groupOf(item)).push(item);
+  const picked = new Map(GROUPS.map((g) => [g, []]));
+  let count = 0;
+  for (let round = 0; count < maxRows; round++) {
+    let added = false;
+    for (const g of GROUPS) {
+      const item = byGroup.get(g)[round];
+      if (item && count < maxRows) {
+        picked.get(g).push(item);
+        count++;
+        added = true;
+      }
+    }
+    if (!added) break;
+  }
+  return { groups: GROUPS.map((g) => [g, picked.get(g)]).filter(([, list]) => list.length), rest: items.length - count };
 }
 
 async function loadData() {
@@ -84,53 +139,118 @@ async function loadData() {
   }
 }
 
-function addText(stack, text, size, color, bold = false) {
+function addText(stack, text, font, color) {
   const t = stack.addText(text);
-  t.font = bold ? Font.boldSystemFont(size) : Font.systemFont(size);
+  t.font = font;
   t.textColor = new Color(color);
   t.lineLimit = 1;
-  t.minimumScaleFactor = 0.7;
+  t.minimumScaleFactor = 0.75;
   return t;
 }
 
-function addCafeteria(stack, cafeteria, now, layout, maxItems) {
-  const card = stack.addStack();
-  card.layoutVertically();
-  card.setPadding(6, 8, 6, 8);
-  card.cornerRadius = layout.cornerRadius;
-  card.backgroundColor = new Color(CAFETERIA_COLOR[cafeteria.id] ?? "#333333", 0.35);
-
-  const day = pickDay(cafeteria, now);
-  const header = card.addStack();
+// 見出し: 色の帯・名前・「今日」バッジと日付。day が null なら日付は出さない
+function addHeader(stack, name, day, now, layout, accent, titleSize) {
+  const fs = layout.fontSize;
+  const header = stack.addStack();
   header.centerAlignContent();
-  addText(header, cafeteria.name, layout.fontSize.title, TEXT_COLOR, true);
+  const bar = header.addStack();
+  bar.size = new Size(3, titleSize);
+  bar.cornerRadius = 1.5;
+  bar.backgroundColor = new Color(accent);
+  header.addSpacer(5);
+  addText(header, name, Font.boldSystemFont(titleSize), TEXT_COLOR);
   header.addSpacer();
-  if (day) addText(header, formatDate(day.date), layout.fontSize.date, SUB_TEXT_COLOR);
-  card.addSpacer(3);
+  if (!day) return;
+  const relative = relativeDay(day.date, now);
+  const badge = header.addStack();
+  badge.setPadding(1, 5, 1, 5);
+  badge.cornerRadius = 4;
+  badge.backgroundColor = new Color(accent, 0.2);
+  addText(badge, relative ?? formatDate(day.date), Font.boldSystemFont(fs.badge), accent);
+  if (relative && !layout.compactHeader) {
+    header.addSpacer(4);
+    addText(header, formatDate(day.date), Font.mediumSystemFont(fs.date), SUB_TEXT_COLOR);
+  }
+}
+
+function addMessage(stack, text, layout) {
+  stack.addSpacer(6);
+  addText(stack, text, Font.mediumSystemFont(layout.fontSize.item), SUB_TEXT_COLOR);
+}
+
+function addRow(stack, label, item, layout, accent) {
+  const fs = layout.fontSize;
+  const row = stack.addStack();
+  row.centerAlignContent();
+  const labelBox = row.addStack();
+  labelBox.size = new Size(layout.labelWidth, 0);
+  if (label) addText(labelBox, label, Font.semiboldSystemFont(fs.label), accent);
+  labelBox.addSpacer();
+  addText(row, item.name, Font.systemFont(fs.item), TEXT_COLOR);
+  row.addSpacer(4);
+  row.addSpacer();
+  if (item.price != null) addText(row, `¥${item.price}`, Font.mediumSystemFont(fs.price), SUB_TEXT_COLOR);
+}
+
+function addDivider(stack) {
+  const line = stack.addStack();
+  line.size = new Size(0, 1);
+  line.backgroundColor = new Color(DIVIDER_COLOR);
+  line.addSpacer();
+}
+
+// 1 つの食堂の見出しとメニュー。表示しきれなかった品数を返す。
+// sharedDate はまとめ見出しに出した日付で、同じ日なら列の見出しには日付を出さない
+function addCafeteria(stack, cafeteria, now, layout, maxRows, shortName, sharedDate) {
+  const accent = CAFETERIA_COLOR[cafeteria.id] ?? SUB_TEXT_COLOR;
+  const day = pickDay(cafeteria, now);
+  const column = stack.addStack();
+  column.layoutVertically();
+  const titleSize = shortName ? layout.fontSize.item : layout.fontSize.title;
+  addHeader(column, shortName ?? cafeteria.name, day?.date === sharedDate ? null : day, now, layout, accent, titleSize);
 
   if (!day) {
-    addText(card, "メニュー未掲載", layout.fontSize.item, SUB_TEXT_COLOR);
-    return;
+    addMessage(column, "メニュー未掲載", layout);
+    return 0;
   }
-
   if (day.items.length === 0) {
-    addText(card, day.note || "日替わりメニューなし", layout.fontSize.item, SUB_TEXT_COLOR);
-    return;
+    addMessage(column, day.note || "日替わりメニューなし", layout);
+    return 0;
+  }
+  if (day.note) {
+    column.addSpacer(2);
+    addText(column, day.note, Font.mediumSystemFont(layout.fontSize.label), accent);
   }
 
   // 今日の分を朝食の時間帯より後に表示するときは朝定食を省く
   const pastBreakfast = day.date === isoDate(now) && now.getHours() >= BREAKFAST_END_HOUR;
-  const available = day.items.filter((i) => !(pastBreakfast && i.category.includes("朝")));
-  const items = available.slice(0, maxItems);
-  for (const item of items) {
-    const row = card.addStack();
-    row.centerAlignContent();
-    addText(row, item.name, layout.fontSize.item, TEXT_COLOR);
-    row.addSpacer();
-    if (item.price != null) addText(row, `¥${item.price}`, layout.fontSize.price, SUB_TEXT_COLOR);
+  const available = day.items.filter((i) => !(pastBreakfast && groupOf(i) === "朝食"));
+  const { groups, rest } = selectRows(available, maxRows);
+  column.addSpacer(5);
+  groups.forEach(([group, items], gi) => {
+    if (gi > 0) column.addSpacer(3);
+    items.forEach((item, i) => {
+      if (i > 0) column.addSpacer(1);
+      addRow(column, i === 0 ? group : null, item, layout, accent);
+    });
+  });
+  return rest;
+}
+
+function addFooter(widget, cafeterias, rest, family, layout) {
+  // 定番は食堂ごとに違うので、1 つの食堂を大きく表示するときだけ出す
+  const common = cafeterias.length === 1 && (family === "large" || family === "extraLarge")
+    ? (cafeterias[0].common ?? []).slice(0, 4)
+    : [];
+  if (rest <= 0 && common.length === 0) return;
+  const footer = widget.addStack();
+  footer.centerAlignContent();
+  if (common.length) {
+    const text = "定番  " + common.map((c) => `${c.name} ¥${c.price}`).join(" · ");
+    addText(footer, text, Font.systemFont(layout.fontSize.label), SUB_TEXT_COLOR);
   }
-  const rest = available.length - items.length;
-  if (rest > 0) addText(card, `ほか${rest}品`, layout.fontSize.price, SUB_TEXT_COLOR);
+  footer.addSpacer();
+  if (rest > 0) addText(footer, `ほか${rest}品`, Font.mediumSystemFont(layout.fontSize.label), SUB_TEXT_COLOR);
 }
 
 async function createWidget(family, targetKey) {
@@ -149,23 +269,42 @@ async function createWidget(family, targetKey) {
   try {
     data = await loadData();
   } catch (e) {
-    addText(widget, "メニューを取得できませんでした", layout.fontSize.item, SUB_TEXT_COLOR);
+    addText(widget, "メニューを取得できませんでした", Font.mediumSystemFont(layout.fontSize.item), SUB_TEXT_COLOR);
     return widget;
   }
 
-  const ids = TARGETS[targetKey] ?? TARGETS[DEFAULT_TARGET];
-  const cafeterias = ids.map((id) => data.cafeterias.find((c) => c.id === id)).filter(Boolean);
-  // 2 つ並べるときは 1 つあたりの品数を減らす
-  const maxItems = Math.max(1, Math.floor(layout.maxItems / cafeterias.length));
-  const isWide = family !== "small" && cafeterias.length > 1;
+  const targetDef = TARGETS[targetKey] ?? TARGETS[DEFAULT_TARGET];
+  const cafeterias = targetDef.ids.map((id) => data.cafeterias.find((c) => c.id === id)).filter(Boolean);
+  const multi = cafeterias.length > 1;
+  let sharedDate = null;
+  if (multi) {
+    const firstDay = pickDay(cafeterias[0], now);
+    sharedDate = firstDay?.date ?? null;
+    addHeader(widget, targetDef.title, firstDay, now, layout, SUB_TEXT_COLOR, layout.fontSize.title);
+    widget.addSpacer(layout.padding / 2);
+  }
+  const maxRows = multi ? layout.multiRows : layout.rows;
+  // medium は横に並べ、small と large は縦に重ねる
+  const sideBySide = multi && family === "medium";
   const container = widget.addStack();
-  if (isWide) container.layoutHorizontally();
+  if (sideBySide) container.layoutHorizontally();
   else container.layoutVertically();
+
+  let rest = 0;
   cafeterias.forEach((c, i) => {
-    if (i > 0) container.addSpacer(6);
-    addCafeteria(container, c, now, layout, isWide ? layout.maxItems : maxItems);
+    if (i > 0) {
+      if (sideBySide) {
+        container.addSpacer(14);
+      } else {
+        container.addSpacer(6);
+        addDivider(container);
+        container.addSpacer(6);
+      }
+    }
+    rest += addCafeteria(container, c, now, layout, maxRows, multi ? targetDef.short[c.id] : null, sharedDate);
   });
   widget.addSpacer();
+  addFooter(widget, cafeterias, rest, family, layout);
   return widget;
 }
 
