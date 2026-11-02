@@ -2,7 +2,7 @@ name: update-menu
 
 on:
   schedule:
-    # 毎日 7:00 と 12:00 (JST)。PDF が変わったときだけ API を呼ぶ
+    # 毎日 7:00 と 12:00 (JST)
     - cron: "0 22 * * *"
     - cron: "0 3 * * *"
   workflow_dispatch:
@@ -25,8 +25,6 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python scripts/update_menu.py
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"

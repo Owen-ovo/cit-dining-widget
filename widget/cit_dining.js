@@ -112,10 +112,6 @@ function addCafeteria(stack, cafeteria, now, layout, maxItems) {
     addText(card, "メニュー未掲載", layout.fontSize.item, SUB_TEXT_COLOR);
     return;
   }
-  if (day.closed) {
-    addText(card, `休業${day.note ? `（${day.note}）` : ""}`, layout.fontSize.item, SUB_TEXT_COLOR);
-    return;
-  }
 
   if (day.items.length === 0) {
     addText(card, day.note || "日替わりメニューなし", layout.fontSize.item, SUB_TEXT_COLOR);

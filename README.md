@@ -7,8 +7,10 @@
 ## 仕組み
 
 1. GitHub Actions が毎日 7:00 と 12:00（JST）に 3 つの PDF をダウンロードする。
-2. PDF が前回から変わっていれば、Claude API で表を読み取って `data/menu.json` を更新・コミットする。変わっていなければ API は呼ばない。
+2. PDF の罫線と文字の位置から表を読み取り（[`scripts/parse_menu.py`](scripts/parse_menu.py)）、内容が変わっていれば `data/menu.json` を更新・コミットする。
 3. ウィジェットは `data/menu.json` を読み込んで、今日のメニューを表示する。
+
+PDF は文字データを持っているので OCR や外部の API は使いません。GitHub Actions だけで動き、費用はかかりません。
 
 ウィジェット側は JSON を読むだけなので、メニューが変わってもスクリプトを入れ直す必要はありません。
 
@@ -47,21 +49,19 @@
 | `LAYOUT` | サイズごとの余白・文字サイズ・表示品数 |
 | `TEST_FAMILY` / `TEST_TARGET` | Scriptable 内で実行したときのプレビュー |
 
-## 自動更新のセットアップ（リポジトリ管理者向け）
+## 自動更新
 
-1. [Claude Console](https://platform.claude.com/) で API キーを発行する。
-2. リポジトリの Settings → Secrets and variables → Actions で、`ANTHROPIC_API_KEY` という名前のシークレットに API キーを登録する。
-3. Actions タブの `update-menu` → Run workflow で 1 回実行し、`data/menu.json` が更新されることを確かめる。
+GitHub Actions の `update-menu` が自動で動くので、設定は不要です。すぐに更新したいときは Actions タブの `update-menu` → Run workflow で実行します。
 
 ローカルで実行する場合:
 
 ```bash
 pip install -r requirements.txt
-ANTHROPIC_API_KEY=... python scripts/update_menu.py
+python scripts/update_menu.py
 ```
 
 ## 注意
 
 - メニューは食堂の都合で変わることがあります。正確な情報は食堂の掲示や公式ページで確認してください。
-- 読み取りは AI によるもので、誤りが含まれることがあります。
+- 表の形が変わると読み取りを誤ることがあります。おかしな表示に気づいたら Issue で知らせてください。
 - 非公式のプロジェクトです。株式会社シー・アイ・ティ・サービスとは関係ありません。
