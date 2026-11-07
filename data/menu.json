@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T10:44:06+09:00",
+  "updated_at": "2026-11-07T18:46:16+09:00",
   "cafeterias": [
     {
       "id": "tsudanuma",
@@ -7,7 +7,7 @@
       "url": "https://www.cit-s.com/wp/wp-content/themes/cit/syokudo/t.pdf",
       "days": [
         {
-          "date": "2026-11-02",
+          "date": "2026-11-09",
           "note": null,
           "items": [
             {
@@ -18,7 +18,7 @@
             },
             {
               "category": "定食",
-              "name": "四川風焼肉丼 水ギョーザ",
+              "name": "温玉のせ 牛丼",
               "price": 400,
               "note": null
             },
@@ -36,163 +36,7 @@
             },
             {
               "category": "日替りサラダ",
-              "name": "ツナとポテトサラダ",
-              "price": 150,
-              "note": null
-            },
-            {
-              "category": "グルメカレー",
-              "name": "温玉&粉チーズ",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "お弁当",
-              "name": "四川風焼肉丼 ヒレカツ&ポテトサラダ",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "日替りラーメン",
-              "name": "とんこつパーコー",
-              "price": 400,
-              "note": null
-            },
-            {
-              "category": "ラーメン",
-              "name": "塩ラーメン",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "今週のパスタ",
-              "name": "チキントマト",
-              "price": null,
-              "note": null
-            },
-            {
-              "category": "今日のパスタ",
-              "name": "ベーコンとブロッコリー クリームパスタ",
-              "price": 300,
-              "note": null
-            },
-            {
-              "category": "夕定食",
-              "name": "温玉のせ やきとり丼",
-              "price": 300,
-              "note": null
-            }
-          ]
-        },
-        {
-          "date": "2026-11-03",
-          "note": null,
-          "items": [
-            {
-              "category": "朝定食",
-              "name": "とり照焼き &コロッケ",
-              "price": 300,
-              "note": null
-            },
-            {
-              "category": "定食",
-              "name": "とりの西京焼き コーン入りコロッケ",
-              "price": 400,
-              "note": null
-            },
-            {
-              "category": "定食",
-              "name": "唐揚 トマトソース",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "定食",
-              "name": "温玉のせ ビビンバ丼",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "日替りサラダ",
-              "name": "ローストビーフ",
-              "price": 150,
-              "note": null
-            },
-            {
-              "category": "グルメカレー",
-              "name": "チョリソー",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "お弁当",
-              "name": "温玉のせビビンバ丼 とり照り&コロッケ",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "日替りラーメン",
-              "name": "味噌バター",
-              "price": 400,
-              "note": null
-            },
-            {
-              "category": "ラーメン",
-              "name": "醤油ラーメン",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "今週のパスタ",
-              "name": "チキンクリーム",
-              "price": null,
-              "note": null
-            },
-            {
-              "category": "今日のパスタ",
-              "name": "肉団子の トマトソース",
-              "price": 300,
-              "note": null
-            },
-            {
-              "category": "夕定食",
-              "name": "ソースヒレカツ丼",
-              "price": 300,
-              "note": null
-            }
-          ]
-        },
-        {
-          "date": "2026-11-04",
-          "note": null,
-          "items": [
-            {
-              "category": "朝定食",
-              "name": "とり天丼 サラダ",
-              "price": 300,
-              "note": null
-            },
-            {
-              "category": "定食",
-              "name": "豚の照焼き かにクリームコロッケ",
-              "price": 400,
-              "note": null
-            },
-            {
-              "category": "定食",
-              "name": "唐揚 ジンジャーソース",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "定食",
-              "name": "さんまフライ おろしだれ きんぴらごぼう",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "日替りサラダ",
-              "name": "えびとアボカド",
+              "name": "ねぎチャーシュー",
               "price": 150,
               "note": null
             },
@@ -204,133 +48,73 @@
             },
             {
               "category": "お弁当",
-              "name": "とり玉丼 焼肉&コロッケ",
+              "name": "温玉ネギチャーシュー丼 チキンカツ",
               "price": 350,
-              "note": null
-            },
-            {
-              "category": "日替りラーメン",
-              "name": "豚キムチ (醤油)",
-              "price": 400,
-              "note": null
-            },
-            {
-              "category": "ラーメン",
-              "name": "とんこつラーメン",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "今週のパスタ",
-              "name": "チキンクリーム",
-              "price": null,
-              "note": null
-            },
-            {
-              "category": "今日のパスタ",
-              "name": "ピリ辛ソーセージ ナポリタン",
-              "price": 300,
-              "note": null
-            },
-            {
-              "category": "夕定食",
-              "name": "ピリ辛そぼろ丼",
-              "price": 300,
               "note": null
             }
           ]
         },
         {
-          "date": "2026-11-05",
+          "date": "2026-11-10",
           "note": null,
           "items": [
             {
               "category": "朝定食",
-              "name": "ハンバーグ &コロッケ",
+              "name": "とり天丼 サラダ",
               "price": 300,
               "note": null
             },
             {
               "category": "定食",
-              "name": "牛肉たっぷり ハヤシライス",
+              "name": "ポークチャップ &厚切りハムカツ",
               "price": 400,
               "note": null
             },
             {
               "category": "定食",
-              "name": "唐揚 マヨネーズ添え",
+              "name": "唐揚 ピリ辛ソース",
               "price": 350,
               "note": null
             },
             {
               "category": "定食",
-              "name": "とりの 旨辛焼き丼",
+              "name": "温玉のせ やきとり丼",
               "price": 350,
               "note": null
             },
             {
               "category": "日替りサラダ",
-              "name": "ねぎチャーシュー",
+              "name": "ツナとアボカド",
               "price": 150,
               "note": null
             },
             {
               "category": "グルメカレー",
-              "name": "5種の チーズかつ",
+              "name": "チョリソー",
               "price": 350,
               "note": null
             },
             {
               "category": "お弁当",
-              "name": "温玉ネギチャーシュー丼 ハンバーグ&コロッケ",
+              "name": "とり玉丼 ヒレカツ&ポテトサラダ",
               "price": 350,
-              "note": null
-            },
-            {
-              "category": "日替りラーメン",
-              "name": "カルビラーメン (醤油)",
-              "price": 400,
-              "note": null
-            },
-            {
-              "category": "ラーメン",
-              "name": "味噌ラーメン",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "今週のパスタ",
-              "name": "チキントマト",
-              "price": null,
-              "note": null
-            },
-            {
-              "category": "今日のパスタ",
-              "name": "ローストビーフの 和風パスタ",
-              "price": 300,
-              "note": null
-            },
-            {
-              "category": "夕定食",
-              "name": "ハンバーグ トマトソース",
-              "price": 300,
               "note": null
             }
           ]
         },
         {
-          "date": "2026-11-06",
+          "date": "2026-11-11",
           "note": null,
           "items": [
             {
               "category": "朝定食",
-              "name": "豚の照焼き丼 サラダ",
+              "name": "とり照焼き &コロッケ",
               "price": 300,
               "note": null
             },
             {
               "category": "定食",
-              "name": "チャーシュー玉子丼",
+              "name": "シシリアンライス",
               "price": 400,
               "note": null
             },
@@ -342,13 +126,13 @@
             },
             {
               "category": "定食",
-              "name": "デミカツ丼",
+              "name": "ピリ辛そぼろの 温玉のっけごはん",
               "price": 350,
               "note": null
             },
             {
               "category": "日替りサラダ",
-              "name": "とりムネとパプリカ",
+              "name": "ローストビーフ",
               "price": 150,
               "note": null
             },
@@ -360,56 +144,122 @@
             },
             {
               "category": "お弁当",
-              "name": "豚の照焼き丼 ロースとんかつ",
+              "name": "温玉ピリ辛そぼろ丼 とり照り&コロッケ",
               "price": 350,
-              "note": null
-            },
-            {
-              "category": "日替りラーメン",
-              "name": "パーコー麺 (醤油)",
-              "price": 400,
-              "note": null
-            },
-            {
-              "category": "ラーメン",
-              "name": "塩ラーメン",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "今週のパスタ",
-              "name": "チキントマト",
-              "price": null,
-              "note": null
-            },
-            {
-              "category": "今日のパスタ",
-              "name": "和風 ツナクリーム",
-              "price": 300,
-              "note": null
-            },
-            {
-              "category": "夕定食",
-              "name": "焼肉丼",
-              "price": 300,
               "note": null
             }
           ]
         },
         {
-          "date": "2026-11-07",
+          "date": "2026-11-12",
           "note": null,
           "items": [
             {
+              "category": "朝定食",
+              "name": "豚の照焼き丼 サラダ",
+              "price": 300,
+              "note": null
+            },
+            {
               "category": "定食",
-              "name": "チキンカツ きのこおろしソース",
+              "name": "帯広豚丼",
+              "price": 400,
+              "note": null
+            },
+            {
+              "category": "定食",
+              "name": "唐揚 マヨネーズ添え",
               "price": 350,
               "note": null
             },
             {
               "category": "定食",
-              "name": "生姜焼丼",
+              "name": "おろし ロースかつ丼",
+              "price": 350,
+              "note": null
+            },
+            {
+              "category": "日替りサラダ",
+              "name": "とりムネとパプリカ",
+              "price": 150,
+              "note": null
+            },
+            {
+              "category": "グルメカレー",
+              "name": "ツナサラダフライ",
+              "price": 350,
+              "note": null
+            },
+            {
+              "category": "お弁当",
+              "name": "豚の照焼き丼 ロースとんかつ",
+              "price": 350,
+              "note": null
+            }
+          ]
+        },
+        {
+          "date": "2026-11-13",
+          "note": null,
+          "items": [
+            {
+              "category": "朝定食",
+              "name": "ハンバーグ &コロッケ",
               "price": 300,
+              "note": null
+            },
+            {
+              "category": "定食",
+              "name": "四川風焼肉丼 水ギョーザ",
+              "price": 400,
+              "note": null
+            },
+            {
+              "category": "定食",
+              "name": "唐揚おろし丼",
+              "price": 350,
+              "note": null
+            },
+            {
+              "category": "定食",
+              "name": "とり照焼き &コロッケ",
+              "price": 350,
+              "note": null
+            },
+            {
+              "category": "日替りサラダ",
+              "name": "えびとポテトサラダ",
+              "price": 150,
+              "note": null
+            },
+            {
+              "category": "グルメカレー",
+              "name": "温玉&粉チーズ",
+              "price": 350,
+              "note": null
+            }
+          ]
+        },
+        {
+          "date": "2026-11-14",
+          "note": null,
+          "items": [
+            {
+              "category": "定食",
+              "name": "唐揚 ジンジャーソース",
+              "price": 350,
+              "note": null
+            },
+            {
+              "category": "定食",
+              "name": "スタミナ炒め丼",
+              "price": 300,
+              "note": null
+            },
+            {
+              "category": "日替りサラダ",
+              "name": "えびとポテトサラダ",
+              "price": 150,
               "note": null
             }
           ]
