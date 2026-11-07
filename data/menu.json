@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03T12:24:41+09:00",
+  "updated_at": "2026-11-07T10:44:06+09:00",
   "cafeterias": [
     {
       "id": "tsudanuma",
@@ -423,72 +423,30 @@
       "url": "https://www.cit-s.com/wp/wp-content/themes/cit/syokudo/s1.pdf",
       "days": [
         {
-          "date": "2026-11-02",
+          "date": "2026-11-09",
           "note": null,
           "items": [
             {
               "category": "朝定食",
-              "name": "トマト包み メンチカツ",
+              "name": "つくね & コーンフライ",
               "price": 300,
               "note": null
             },
             {
               "category": "",
-              "name": "白身フライ タルタルソース & 肉団子",
+              "name": "イタリアン ハンバーグ & フライドポテト",
               "price": 350,
               "note": null
             },
             {
               "category": "",
-              "name": "焼鳥玉子丼",
+              "name": "唐揚丼",
               "price": 350,
               "note": null
             },
             {
               "category": "グルメカレー",
-              "name": "スクランブルエッグ",
-              "price": null,
-              "note": null
-            },
-            {
-              "category": "麺",
-              "name": "唐揚おろし うどん・そば",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "麺",
-              "name": "正油ラーメン 味噌ラーメン",
-              "price": 350,
-              "note": null
-            }
-          ]
-        },
-        {
-          "date": "2026-11-03",
-          "note": "文化の日",
-          "items": [
-            {
-              "category": "朝定食",
-              "name": "かぼちゃコロッケ",
-              "price": 300,
-              "note": null
-            },
-            {
-              "category": "",
-              "name": "ハンバーグの マヨコーン チーズ焼",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "",
-              "name": "味噌カツ丼",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "グルメカレー",
-              "name": "焼肉カレー",
+              "name": "つくねカレー",
               "price": null,
               "note": null
             },
@@ -497,16 +455,22 @@
               "name": "天ぷらうどん・そば カレーうどん・そば",
               "price": 300,
               "note": null
+            },
+            {
+              "category": "麺",
+              "name": "塩バター ラーメン",
+              "price": 400,
+              "note": null
             }
           ]
         },
         {
-          "date": "2026-11-04",
+          "date": "2026-11-10",
           "note": null,
           "items": [
             {
               "category": "朝定食",
-              "name": "塩ダレチキン",
+              "name": "ササミチーズフライ",
               "price": 300,
               "note": null
             },
@@ -518,21 +482,21 @@
             },
             {
               "category": "",
-              "name": "十勝風豚丼",
+              "name": "プルコギ丼",
               "price": 400,
               "note": null
             },
             {
               "category": "グルメカレー",
-              "name": "チーズ包み メンチカツ",
+              "name": "ササミチーズ",
               "price": null,
               "note": null
             },
             {
               "category": "麺",
-              "name": "明太バター うどん",
+              "name": "鶏天 うどん・そば",
               "price": 350,
-              "note": "大盛販売ありません"
+              "note": null
             },
             {
               "category": "麺",
@@ -543,48 +507,54 @@
           ]
         },
         {
-          "date": "2026-11-05",
+          "date": "2026-11-11",
           "note": null,
           "items": [
             {
               "category": "朝定食",
-              "name": "イカフライ",
+              "name": "さんまフライ",
               "price": 300,
               "note": null
             },
             {
               "category": "",
-              "name": "チーズイン ハンバーグ トマトソースがけ",
+              "name": "ミックスフライ 白身フライ・エビフライ・チキンカツ",
               "price": 350,
               "note": null
             },
             {
               "category": "",
-              "name": "ポークステーキ丼",
+              "name": "チャーシュー入 チャーハン & 餃子のチリソース",
               "price": 350,
               "note": null
             },
             {
               "category": "グルメカレー",
-              "name": "イカフライ",
+              "name": "チーズハンバーグ",
               "price": null,
               "note": null
             },
             {
               "category": "麺",
-              "name": "天ぷらうどん・そば カレーうどん・そば ラーメン販売",
+              "name": "天ぷらうどん・そば カレーうどん・そば",
               "price": 300,
-              "note": "ありません"
+              "note": null
+            },
+            {
+              "category": "麺",
+              "name": "とんこつ ラーメン",
+              "price": 400,
+              "note": null
             }
           ]
         },
         {
-          "date": "2026-11-06",
+          "date": "2026-11-12",
           "note": null,
           "items": [
             {
               "category": "朝定食",
-              "name": "チキンカツ",
+              "name": "ピーマン 肉詰めフライ",
               "price": 300,
               "note": null
             },
@@ -596,20 +566,20 @@
             },
             {
               "category": "",
-              "name": "スタミナ丼",
+              "name": "シーフード ピラフ & チキンカツ",
               "price": 350,
               "note": null
             },
             {
               "category": "グルメカレー",
-              "name": "チキンカツ",
+              "name": "ピーマン 肉詰めフライ",
               "price": null,
               "note": null
             },
             {
               "category": "麺",
-              "name": "大きなきつね うどん・そば",
-              "price": 300,
+              "name": "温玉のせ 肉うどん・肉そば",
+              "price": 350,
               "note": null
             },
             {
@@ -621,7 +591,49 @@
           ]
         },
         {
-          "date": "2026-11-07",
+          "date": "2026-11-13",
+          "note": null,
+          "items": [
+            {
+              "category": "朝定食",
+              "name": "きのこクリーム コロッケ",
+              "price": 300,
+              "note": null
+            },
+            {
+              "category": "",
+              "name": "豚甘酢 あんかけ & シューマイ",
+              "price": 350,
+              "note": null
+            },
+            {
+              "category": "",
+              "name": "韓国風 そぼろ丼",
+              "price": 350,
+              "note": null
+            },
+            {
+              "category": "グルメカレー",
+              "name": "カリッと ホットチキン",
+              "price": null,
+              "note": null
+            },
+            {
+              "category": "麺",
+              "name": "天ぷらうどん・そば カレーうどん・そば",
+              "price": 300,
+              "note": null
+            },
+            {
+              "category": "麺",
+              "name": "油そば",
+              "price": 400,
+              "note": null
+            }
+          ]
+        },
+        {
+          "date": "2026-11-14",
           "note": "10:30〜13:50 営業中",
           "items": []
         }
@@ -659,42 +671,18 @@
       "url": "https://www.cit-s.com/wp/wp-content/themes/cit/syokudo/s2.pdf",
       "days": [
         {
-          "date": "2026-11-02",
+          "date": "2026-11-09",
           "note": null,
           "items": [
             {
               "category": "丼",
-              "name": "牛すじシチュー",
+              "name": "ネギトロユッケ丼",
               "price": 400,
               "note": null
             },
             {
               "category": "カレー",
-              "name": "ササミチーズ",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "パスタ",
-              "name": "トマトパスタ",
-              "price": 350,
-              "note": null
-            }
-          ]
-        },
-        {
-          "date": "2026-11-03",
-          "note": "文化の日",
-          "items": [
-            {
-              "category": "丼",
-              "name": "味玉豚丼",
-              "price": 400,
-              "note": null
-            },
-            {
-              "category": "カレー",
-              "name": "挽肉とトマトの カレー",
+              "name": "5種の チーズフライ",
               "price": 350,
               "note": null
             },
@@ -707,72 +695,96 @@
           ]
         },
         {
-          "date": "2026-11-04",
+          "date": "2026-11-10",
           "note": null,
           "items": [
             {
               "category": "丼",
-              "name": "ハンバーグ丼",
+              "name": "陳さんの 豚肉と春雨の ピリ辛丼",
               "price": 350,
               "note": null
             },
             {
               "category": "カレー",
-              "name": "温玉チーズ",
+              "name": "ガリバタ チキンステーキ",
               "price": 350,
               "note": null
             },
             {
               "category": "パスタ",
-              "name": "陳さんの 鶏そば",
+              "name": "ボロネーゼ",
               "price": 400,
               "note": null
             }
           ]
         },
         {
-          "date": "2026-11-05",
+          "date": "2026-11-11",
           "note": null,
           "items": [
             {
               "category": "丼",
-              "name": "陳さんの 麻婆丼",
-              "price": 350,
-              "note": null
-            },
-            {
-              "category": "カレー",
-              "name": "ホワイトカレー",
+              "name": "ヤンニョム チーズ丼 ロコモコ丼",
               "price": 400,
               "note": null
             },
             {
-              "category": "パスタ",
-              "name": "ポルチーニ",
+              "category": "カレー",
+              "name": "唐揚 オムハヤシ",
               "price": 350,
+              "note": null
+            },
+            {
+              "category": "パスタ",
+              "name": "キャベツとしらすの 陳さんの ペペロンチーノ 高菜あんかけ麺",
+              "price": 400,
               "note": null
             }
           ]
         },
         {
-          "date": "2026-11-06",
+          "date": "2026-11-12",
           "note": null,
           "items": [
             {
               "category": "丼",
-              "name": "オムライス",
+              "name": "ヤンニョム チーズ丼 ロコモコ丼",
               "price": 400,
               "note": null
             },
             {
               "category": "カレー",
-              "name": "グリーンカレー",
-              "price": 400,
+              "name": "唐揚 オムハヤシ",
+              "price": 350,
               "note": null
             },
             {
               "category": "パスタ",
-              "name": "クリーム明太",
+              "name": "キャベツとしらすの 陳さんの ペペロンチーノ 高菜あんかけ麺",
+              "price": 400,
+              "note": null
+            }
+          ]
+        },
+        {
+          "date": "2026-11-13",
+          "note": null,
+          "items": [
+            {
+              "category": "丼",
+              "name": "カツ丼",
+              "price": 350,
+              "note": null
+            },
+            {
+              "category": "カレー",
+              "name": "ベジチキン",
+              "price": 350,
+              "note": null
+            },
+            {
+              "category": "パスタ",
+              "name": "バジルパスタ",
               "price": 400,
               "note": null
             }
